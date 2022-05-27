@@ -201,6 +201,7 @@ namespace VisitCounter
         String _dicKey = null;
         Human _humanObj = null;
         double _additionalRadius = 0.0;
+        bool _cancel;
         List<String> _infrastructureTagList = null;
         public City(OSMLSGlobalLibrary.IInheritanceTreeCollection<Geometry> mapObjects,
             Polygon mainRectangle)
@@ -257,6 +258,7 @@ namespace VisitCounter
         }
         void AddCommand(String[] commandPart)
         {
+            this._cancel = false;
             if (commandPart[0] == "add")
             {
                 if (commandPart[1] == "human")
@@ -270,12 +272,18 @@ namespace VisitCounter
                     {
                         this._humanObj.SetDestinationCoordinates(new List<Coordinate>() { new Coordinate(4194302, 7516220), new Coordinate(4194296, 7516230) });
                     }
-                    this.AddHumanToMap();
+                    if(!this._cancel)
+                    {
+                        this.AddHumanToMap();
+                    }
                 }
                 else
                 {
                     this.AddInfrastructureToDic(commandPart[1]);
-                    this.AddInfrastToMap();
+                    if (!this._cancel)
+                    {
+                        this.AddInfrastToMap();
+                    }
                 }
             }
         }
@@ -552,7 +560,7 @@ namespace VisitCounter
                 return tagList;
             return null;
         }
-        void AddTags()
+        void AddTags(bool forPoint)
         {
             bool repeat = true;
             String tagString;
@@ -561,7 +569,7 @@ namespace VisitCounter
             {
                 Console.WriteLine("Input tags:");
                 tagString = Console.ReadLine();
-                if (tagString != "cancle")
+                if (tagString != "cancel")
                 {
                     tagList = StringToTagList(tagString);
                     if (tagList != null)
@@ -579,6 +587,14 @@ namespace VisitCounter
                 }
                 else
                 {
+                    if(!forPoint)
+                    {
+                        this._infrastObj.HasTagDic.TryAdd("None", true);
+                    }
+                    else
+                    {
+                        this._infrastObj.HasTagDic.TryAdd("work", true);
+                    }
                     repeat = false;
                 }
             } while (repeat);
@@ -593,7 +609,7 @@ namespace VisitCounter
                 null
             );
             this._infrastructureTagList = this._polygonTagList;
-            this.AddTags();
+            this.AddTags(false);
             this._infrastObj.SetBufferedGeometry(Constant.humanRadius, true);
             this._infrastObj.CustomType = Customizer.GetCustomizerType(this._infrastObj.HasTagDic);
             this._infrastObj.Geometry = this._customizer.Customize((Polygon)this._infrastObj.Geometry, this._infrastObj.CustomType);
@@ -617,7 +633,7 @@ namespace VisitCounter
                 null
             );
             this._infrastructureTagList = this._wayTagList;
-            this.AddTags();
+            this.AddTags(false);
             this._additionalRadius = InfrastructureObject.GetAdditionalRadiusForInfrastructureWay(this._infrastObj);
             this._infrastObj.SetBufferedGeometry(Constant.humanRadius + this._additionalRadius, false);
             this._infrastObj.CustomType = Customizer.GetCustomizerType(this._infrastObj.HasTagDic);
@@ -642,7 +658,7 @@ namespace VisitCounter
                 null
             );
             this._infrastructureTagList = this._wayTagList;
-            this.AddTags();
+            this.AddTags(false);
             this._additionalRadius = InfrastructureObject.GetAdditionalRadiusForInfrastructureWay(this._infrastObj);
             this._infrastObj.SetBufferedGeometry(Constant.humanRadius + this._additionalRadius, false);
             this._infrastObj.CustomType = Customizer.GetCustomizerType(this._infrastObj.HasTagDic);
@@ -673,7 +689,7 @@ namespace VisitCounter
                     null
                 );
                 this._infrastructureTagList = this._pointTagList;
-                this.AddTags();
+                this.AddTags(true);
                 this._infrastObj.CustomType = Customizer.GetCustomizerType(this._infrastObj.HasTagDic);
                 this._infrastObj.Geometry = this._customizer.Customize(this._infrastObj.Geometry, this._infrastObj.CustomType);
                 if (this._infrastObj.Geometry != null)
@@ -706,7 +722,7 @@ namespace VisitCounter
             {
                 Console.WriteLine("Input coordinates:");
                 coordinates = Console.ReadLine();
-                if (coordinates != "cancle")
+                if (coordinates != "cancel")
                 {
                     coordinateArr = StringToCoordinateArr(coordinates);
                     if (coordinateArr != null)
@@ -737,6 +753,7 @@ namespace VisitCounter
                 }
                 else
                 {
+                    this._cancel = true;
                     repeat = false;
                 }
             } while (repeat);
@@ -751,7 +768,7 @@ namespace VisitCounter
             {
                 Console.WriteLine("Input coordinates:");
                 coordinates = Console.ReadLine();
-                if (coordinates != "cancle")
+                if (coordinates != "cancel")
                 {
                     coordinateArr = StringToCoordinateArr(coordinates);
                     if (coordinateArr != null)
@@ -787,6 +804,7 @@ namespace VisitCounter
                 }
                 else
                 {
+                    this._cancel = true;
                     repeat = false;
                 }
             } while (repeat);
@@ -857,7 +875,6 @@ namespace VisitCounter
             noErr &= this.StringToDouble(strRadius, out radius, 0.1);
             if (noErr)
             {
-                Console.WriteLine(new Point(x, y));
                 Polygon buffer = (Polygon)(new Point(x, y).Buffer(radius));
                 foreach (Human human in Human.HumanDic.Values)
                 {
