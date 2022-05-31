@@ -14,14 +14,14 @@ namespace VisitCounter
         public void AddWalkableTag(
             Dictionary<String, TagsOfOutTag> TagsToOutTagsDic,
             IInfrastructure infrastObj,
-            IOsmObject osmClosedWay)
+            IOsmObject osmObj)
         {
             foreach (KeyValuePair<String, TagsOfOutTag> pair
                 in TagsToOutTagsDic)
             {
                 if (pair.Value.ContainsTagsFromLists)
                 {
-                    if (this.IsTag(pair.Value, osmClosedWay, true))
+                    if (this.IsTag(pair.Value, osmObj, true))
                     {
                         infrastObj.HasTagDic.Add(pair.Key, true);
                     }
@@ -35,14 +35,14 @@ namespace VisitCounter
         public void AddOutTags(
             Dictionary<String, TagsOfOutTag> TagsToOutTagsDic,
             IInfrastructure infrastObj,
-            IOsmObject osmClosedWay)
+            IOsmObject osmObj)
         {
             foreach (KeyValuePair<String, TagsOfOutTag> pair
                 in TagsToOutTagsDic)
             {
                 if (pair.Value.ContainsTagsFromLists)
                 {
-                    if (this.IsTag(pair.Value, osmClosedWay, true))
+                    if (this.IsTag(pair.Value, osmObj, true))
                     {
                         infrastObj.HasTagDic.Add(
                             pair.Value.ContainsTagsPrefix + pair.Key,
@@ -51,7 +51,7 @@ namespace VisitCounter
                 }
                 if (pair.Value.DoesNotContainTagsFromLists)
                 {
-                    if (this.IsTag(pair.Value, osmClosedWay, false))
+                    if (this.IsTag(pair.Value, osmObj, false))
                     {
                         infrastObj.HasTagDic.Add(
                             pair.Value.DoesNotContainTagsPrefix + pair.Key,
