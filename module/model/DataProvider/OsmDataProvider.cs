@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace VisitCounter
 {
-    class OsmDataProvider
+    public class OsmDataProvider
     {
         public OSMLSGlobalLibrary.IInheritanceTreeCollection<Geometry>
             MapObjects

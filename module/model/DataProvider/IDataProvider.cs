@@ -5,7 +5,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    interface IDataProvider
+    public interface IDataProvider
     {
         public double GetAdditionalRadiusByTags(
             Dictionary<String, bool> hasTagObj);

@@ -6,7 +6,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    class DataConverter: IDataConverter
+    public class DataConverter: IDataConverter
     {
         bool _allowedToAddOsm;
         bool _allowedToAddInfrast;

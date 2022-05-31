@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    class Human : HumanPriority, IHuman
+    public class Human : HumanPriority, IHuman
     {
         static int s_nextID = 1;
         public int ID { get; private set; }

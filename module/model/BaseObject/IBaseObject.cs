@@ -2,7 +2,7 @@
 
 namespace VisitCounter
 {
-    interface IBaseObject
+    public interface IBaseObject
     {
         public Geometry Geometry { get; set; }
     }

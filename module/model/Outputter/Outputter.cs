@@ -6,7 +6,7 @@ using System.Text;
 
 namespace VisitCounter
 {
-    class Outputter: IOutputter
+    public class Outputter: IOutputter
     {
         OSMLSGlobalLibrary.IInheritanceTreeCollection<Geometry> 
             _mapObjects;

@@ -3,7 +3,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    interface IMovingObject
+    public interface IMovingObject
     {
         public List<Coordinate> DstCoordinates { get; set; }
         public List<Coordinate> VisitedCrdList { get; }

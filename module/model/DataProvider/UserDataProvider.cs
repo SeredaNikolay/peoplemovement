@@ -7,7 +7,7 @@ using System.IO;
 
 namespace VisitCounter
 {
-    class UserDataProvider
+    public class UserDataProvider
     {
         public List<String> PolygonTagList { get; private set; }
         public List<String> WayTagList { get; private set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace VisitCounter
 {
-    class Grid: IGrid
+    public class Grid: IGrid
     {
         double _minX, _minY, _maxX, _maxY;
         int _cellCountX, _cellCountY;

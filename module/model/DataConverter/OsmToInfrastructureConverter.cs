@@ -5,7 +5,7 @@ using CityDataExpansionModule.OsmGeometries;
 
 namespace VisitCounter
 {
-    class OsmToInfrastructureConverter: IOsmToInfrastructureConverter
+    public class OsmToInfrastructureConverter: IOsmToInfrastructureConverter
     {
         public OsmToInfrastructureConverter()
         {

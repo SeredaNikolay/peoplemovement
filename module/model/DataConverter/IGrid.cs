@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    interface IGrid
+    public interface IGrid
     {
         public Polygon MainRectangle { get; set; }
         public double GridPitch { get; set; }

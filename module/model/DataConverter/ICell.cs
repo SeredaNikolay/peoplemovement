@@ -2,7 +2,7 @@
 
 namespace VisitCounter
 {
-    interface ICell
+    public interface ICell
     {
         public int VisitCount { get; set; }
         public void SetCustomizerTypeCost(CustomizerType key,

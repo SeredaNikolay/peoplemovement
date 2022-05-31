@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VisitCounter
 {
-    interface IHumanPriority: IMovingObject
+    public interface IHumanPriority: IMovingObject
     {
         public Dictionary<String, IDestinationType> GetDestinatinTypeDic
         {

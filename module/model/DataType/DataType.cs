@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace VisitCounter
 {
-    abstract class Info
+    public abstract class Info
     {
         public int ID { get; private set; }
         public Info(int id)
@@ -13,7 +13,7 @@ namespace VisitCounter
         }
     }
 
-    class HumanInfo : Info
+    public class HumanInfo : Info
     {
         public List<IDestinationType> DstTypeList { get; private set; }
         public HumanInfo(int id, List<IDestinationType> dstTypeList) :
@@ -23,7 +23,7 @@ namespace VisitCounter
         }
     }
 
-    class InfrastructureInfo : Info
+    public class InfrastructureInfo : Info
     {
         public String Type { get; private set; }
         public List<String> TagList { get; private set; }

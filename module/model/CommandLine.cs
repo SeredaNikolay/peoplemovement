@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace VisitCounter
 {
-    class CommandLine: ICommandLine
+    public class CommandLine: ICommandLine
     {
         IDataConverter _dataConverter;
         bool _cancel;

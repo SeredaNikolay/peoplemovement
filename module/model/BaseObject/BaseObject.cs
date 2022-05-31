@@ -3,7 +3,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    abstract class BaseObject: IBaseObject
+    public abstract class BaseObject: IBaseObject
     {
         private Geometry geometry = null;
         public static bool IsSuitableClass(Geometry geom)

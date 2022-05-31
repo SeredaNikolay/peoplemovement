@@ -4,7 +4,7 @@ using CityDataExpansionModule.OsmGeometries;
 
 namespace VisitCounter
 {
-    interface IOsmToInfrastructureConverter
+    public interface IOsmToInfrastructureConverter
     {
         public void AddWalkableTag(
             Dictionary<String, TagsOfOutTag> TagsToOutTagsDic,

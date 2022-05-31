@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    class Infrastructure : BaseObject, IInfrastructure
+    public class Infrastructure : BaseObject, IInfrastructure
     {
         static int s_nextID = 1;
         public int ID { get; private set; }

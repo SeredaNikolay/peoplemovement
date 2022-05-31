@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    abstract class MovingObject: BaseObject, IMovingObject
+    public abstract class MovingObject: BaseObject, IMovingObject
     {
         double _step = 2.0;
         Coordinate _curCrd;

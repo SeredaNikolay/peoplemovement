@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    class Cell: ICell
+    public class Cell: ICell
     {
         bool _customTypeDetected = false;
         CustomizerType _cellCustomType = CustomizerType.None;

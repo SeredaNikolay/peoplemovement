@@ -3,8 +3,9 @@ using OSMLSGlobalLibrary.Modules;
 using System.Collections.Generic;
 using CityDataExpansionModule;
 using NetTopologySuite.Geometries;
+using VC = VisitCounter;
 
-namespace VisitCounter
+namespace Test
 {
     public class VisitCounter : OSMLSModule
     {
@@ -13,17 +14,16 @@ namespace VisitCounter
         int _iterationCount = 0;
         bool _updated = true;
         String _command;
-        IGrid _grid;
-
-        ICommandLine _commandLine;
+        VC.IGrid _grid;
+        VC.ICommandLine _commandLine;
         protected override void Initialize()
         {
             Polygon mainRectangle = GetModule<CityDataExpansion>()
                 .MapBorders;
-            this._commandLine = new CommandLine(MapObjects,
+            this._commandLine = new VC.CommandLine(MapObjects,
                                                         mainRectangle);
             this._grid = this._commandLine.GetGrid();
-            IHuman human;
+            VC.IHuman human;
             if (this._commandLine.GetHumanDic().TryGetValue(1, out human))
             {
                 human.SetDestinationCoordinates(
@@ -48,7 +48,7 @@ namespace VisitCounter
             {
                 int j, i;
                 this._updated = false;
-                foreach (KeyValuePair<int, IHuman> pair 
+                foreach (KeyValuePair<int, VC.IHuman> pair 
                     in this._commandLine.GetHumanDic())
                 {
                     pair.Value.Live(null);

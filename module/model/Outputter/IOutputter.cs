@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    interface IOutputter
+    public interface IOutputter
     {
         public void AddInfrastToMap(
             Dictionary<String, List<Geometry>> infrastDic);

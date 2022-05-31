@@ -362,7 +362,7 @@ namespace VisitCounter
                 })
             })
         });"
-)]
+    )]
     class NonePoint : Point
     {
         public NonePoint(Point point) : base(point.Coordinate)

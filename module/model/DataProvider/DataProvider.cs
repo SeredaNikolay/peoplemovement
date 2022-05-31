@@ -5,7 +5,7 @@ using CityDataExpansionModule.OsmGeometries;
 
 namespace VisitCounter
 {
-    class DataProvider : IDataProvider
+    public class DataProvider : IDataProvider
     {
         OsmDataProvider _osmDataProvider;
         UserDataProvider _userDataProvider;

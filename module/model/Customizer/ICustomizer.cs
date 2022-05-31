@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    interface ICustomizer
+    public interface ICustomizer
     {
         public CustomizerType GetCustomizerTypeByTags(
             Dictionary<String, bool> hasTagDic);

@@ -5,7 +5,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    abstract class HumanPriority : MovingObject, IHumanPriority
+    public abstract class HumanPriority : MovingObject, IHumanPriority
     {
         Dictionary<String, IDestinationType> _dstTypeDic = 
             new Dictionary<String, IDestinationType>()

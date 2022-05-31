@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace VisitCounter
 {
-    interface IDataConverter: IBase
+    public interface IDataConverter: IBase
     {
         public void AddOsmInfrastructure(bool add);
         public void AddInfrastructure(String geometryType,

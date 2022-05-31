@@ -2,7 +2,7 @@
 
 namespace VisitCounter
 {
-    interface IInfrastructure : IHasTagObject, IID, IBaseObject
+    public interface IInfrastructure : IHasTagObject, IID, IBaseObject
     {
         public CustomizerType CustomType { get; set; }
         public void SetBufferedGeometry(double additionalRadius,

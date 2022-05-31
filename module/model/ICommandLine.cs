@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VisitCounter
 {
-    interface ICommandLine: IBase
+    public interface ICommandLine: IBase
     {
         public void AddOsmInfrastructure(bool add);
         public void AddInfrastructure(String geometryType);
