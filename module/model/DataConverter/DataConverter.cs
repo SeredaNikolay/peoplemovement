@@ -653,7 +653,7 @@ namespace VisitCounter
                         List<IDestinationType> dstTypeList =
                             new List<IDestinationType>();
                         foreach (IDestinationType humInfo in
-                            human.GetDestinatinTypeDic.Values)
+                            human.DestinatinTypeDic.Values)
                         {
                             dstTypeList.Add(humInfo);
                         }
