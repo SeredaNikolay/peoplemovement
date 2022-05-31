@@ -45,7 +45,16 @@ namespace VisitCounter
         {
             Geometry geometry = this.Geometry;
             Polygon newPolygon = null;
-            double radius = additionalRadius;
+            double radius;
+            if(additionalRadius <= 0.1)
+            {
+                radius = 0.1;
+                Console.WriteLine("Wrong buffer radius. Replaced with 0.1");
+            }
+            else
+            {
+                radius = additionalRadius;
+            }
             if(this.Geometry is Polygon || geometry is LinearRing)
             {
                 if (needsPolygon)
