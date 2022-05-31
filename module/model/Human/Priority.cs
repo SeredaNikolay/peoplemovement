@@ -16,7 +16,7 @@ namespace VisitCounter
             { "leisure", new DestinationType("leisure", 35.0, 4)}
         };
 
-        public Dictionary<String, IDestinationType> GetDestinatinTypeDic 
+        public Dictionary<String, IDestinationType> DestinatinTypeDic 
         { 
             get { return this._dstTypeDic; } 
         }
